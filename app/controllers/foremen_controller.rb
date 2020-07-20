@@ -1,0 +1,2 @@
+class ForemenController < ApplicationController
+end
