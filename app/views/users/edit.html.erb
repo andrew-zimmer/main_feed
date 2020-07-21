@@ -3,21 +3,33 @@
 <%= form_for @user do |f| %>
 
 
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name%>
-  </div>
+    <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name%>
+    </div>
 
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+    <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+    </div>
 
 
     <div>
-      <%= f.label :role, 'Access Level' %><br>
-      <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']], selected: @user.role %>
+        <%= f.label :role, 'Access Level' %><br>
+        <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']], selected: @user.role %>
     </div>
+
+    <div>
+        <%= f.fields_for :foreman do |b| %>
+            <%= b.label "foreman"%>
+            <%= b.check_box :user_id %>
+        <% end %>
+    </div>
+
+  <div>
+    <%= f.label :phone_number %>
+    <%= f.number_field :phone_number %>
+  </div>
 
 
   <div class="field">

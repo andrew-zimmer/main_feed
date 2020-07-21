@@ -2,5 +2,5 @@
 <%= link_to 'Edit Yourself', edit_user_registration_path(current_user.id) if signed_in?%>
 
 <% User.all.each do |t| %>
-    <%= link_to t.first_name, edit_user_registration_path(t.id)%>
+    <%= link_to t.first_name, edit_user_path(t) %>
 <% end %>
