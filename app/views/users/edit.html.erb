@@ -1,7 +1,7 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit <%= @user.first_name %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for @user do |f| %>
+
 
   <div>
     <%= f.label :first_name %>
@@ -16,7 +16,7 @@
 
     <div>
       <%= f.label :role, 'Access Level' %><br>
-      <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']], selected: current_user.role %>
+      <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']], selected: @user.role %>
     </div>
 
 
@@ -25,9 +25,9 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <%# <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <%# <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <%# <% end %>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
@@ -43,10 +43,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+
 
   <div class="actions">
     <%= f.submit "Update" %>
@@ -55,6 +52,6 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

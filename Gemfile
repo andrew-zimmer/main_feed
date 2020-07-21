@@ -7,6 +7,8 @@ gem 'therubyracer'
 
 gem 'devise', '~> 4.7', '>= 4.7.2'
 
+gem 'cancancan', '~> 3.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
