@@ -23,6 +23,7 @@
             <% else %>
               <%= link_to 'Sign In', new_user_session_path, class: 'text-light' %>
               <%= link_to "Sign Up", new_user_registration_path, class: 'text-light' %>
+              <%= link_to "Sign In with Google", user_google_oauth2_omniauth_authorize_path, class: 'btn bg-blue-500'%>
             <% end %>
           </div>
         </div>
