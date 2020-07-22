@@ -1,0 +1,41 @@
+
+    <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name%>
+    </div>
+
+    <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+    </div>
+
+
+    <div>
+        <%= f.label :role, 'Access Level' %><br>
+        <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']] %>
+    </div>
+
+  <div>
+    <%= f.label :phone_number %><br>
+    <%= f.phone_field :phone_number %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, uniqueness: true
-  validates :phone_number, length: {is: 10}
+  validates :phone_number, numericality: true,  length: {is: 10}
 
   #relationships
   has_one :foreman

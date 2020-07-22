@@ -14,13 +14,13 @@ class UsersController < ApplicationController
     end
 
     def edit
-
-            @user = User.find_by(id: params[:id])
-            if @user.foreman
-                @foreman = @user.foreman
-            else
-                @foreman = @user.build_foreman
-            end
+        @user = User.find_by(id: params[:id])
+        @user.phone_number
+        if @user.foreman
+            @foreman = @user.foreman
+        else
+            @foreman = @user.build_foreman
+        end
     end
 
     def update
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
         params[:user].delete(:password) if params[:user][:password].blank?
         params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
         params[:user].delete(:foreman_attributes) if params[:user][:foreman_attributes][:user_id] != user.id
+
         user.update(user_params)
 
         user.save
