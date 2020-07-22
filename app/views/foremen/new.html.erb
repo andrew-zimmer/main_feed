@@ -1,2 +1,8 @@
 <h1> Create a new foreman </h1>
-<%= render 'form'%>
+
+<%= form_for @foreman do |f| %>
+
+    <%= f.label :user_id, 'Select a new foreman'%>
+    <%= f.collection_select :user_id, User.all, :id, :first_name, prompt: true %>
+    <%= render partial: 'form', locals: {f: f}%>
+<% end %>

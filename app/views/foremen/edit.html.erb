@@ -1,1 +1,5 @@
-<h1> Foreman edit </h1>
+<h1> Edit <%= current_foreman %> </h1>
+<%= form_for @foreman do |f| %>
+    <%= render partial: 'form', locals: {f: f}%>
+<% end %>
+<%= button_to 'Delete Foreman', foreman_path(@foreman), method: :delete %>
