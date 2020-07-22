@@ -7,34 +7,30 @@ class ForemenController < ApplicationController
     end
 
     def new
-        if signed_in? && current_user.foreman
-            @foreman = current_user.foreman
-            @foreman.user
-        else
-            @foreman = Foreman.new
-            @foreman.build_user
-        end
+        @foreman = Foreman.new
+        @foreman.build_user
     end
 
     def create
+
         if foreman_params[:user_id].blank?
             foreman = Foreman.new.build_user(foreman_params[:user_attributes])
             foreman.save
             redirect_to '/'
         else
-            Foreman.create(foreman_params).save
-            redirect_to '/'
+            User.find_by(id: foreman_params[:user_id]).build_foreman.save
+            redirect_to foremen_path
         end
     end
 
     def edit
-        @foreman = Foreman.find_by(id: params[:id])
+        @foreman = find_foreman_with_params
     end
 
     def update
 
-        foreman = Foreman.find_by(id: params[:id])
-        delete_password_attributes_if_not_present
+        foreman = find_foreman_with_params
+        delete_password_attributes_from_params_if_not_present
         foreman.user.update(foreman_params[:user_attributes])
 
         foreman.save
@@ -42,7 +38,8 @@ class ForemenController < ApplicationController
     end
 
     def destroy
-
+        find_foreman_with_params.delete
+        redirect_to foremen_path
     end
 
     private
@@ -50,9 +47,12 @@ class ForemenController < ApplicationController
         params.require(:foreman).permit(:user_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number ])
     end
 
-    def delete_password_attributes_if_not_present
+    def delete_password_attributes_from_params_if_not_present
         params[:foreman][:user_attributes].delete(:password) if params[:foreman][:user_attributes][:password].blank?
         params[:foreman][:user_attributes].delete(:password_confirmation) if params[:foreman][:user_attributes][:password].blank? and params[:foreman][:user_attributes][:password_confirmation].blank?
+    end
 
+    def find_foreman_with_params
+        Foreman.find_by(id: params[:id])
     end
 end
