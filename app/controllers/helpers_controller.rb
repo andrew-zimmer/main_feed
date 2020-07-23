@@ -1,7 +1,10 @@
 class HelpersController < ApplicationController
     def index
+
         if params[:foreman_id]
-            @helpers = Foreman.find_by(id: params[:foreman_id]).helpers
+            @foreman = Foreman.find_by(id: params[:foreman_id])
+            @helpers = @foreman.helpers
+
         else
             @helpers = Helper.all
         end
