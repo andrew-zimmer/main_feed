@@ -1,4 +1,5 @@
 class ForemenController < ApplicationController
+
     def index
     end
 
@@ -25,6 +26,7 @@ class ForemenController < ApplicationController
 
     def edit
         @foreman = find_foreman_with_params
+
     end
 
     def update
@@ -54,5 +56,9 @@ class ForemenController < ApplicationController
 
     def find_foreman_with_params
         Foreman.find_by(id: params[:id])
+    end
+
+    def redirect_to_root
+        redirect_to root_path
     end
 end

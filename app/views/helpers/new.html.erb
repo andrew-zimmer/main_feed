@@ -1,0 +1,9 @@
+<h1> build a helper workshop </h1>
+
+<%= form_for @helper do |f| %>
+
+    <%= f.label :foreman_id, 'Foreman' %>
+    <%= f.collection_select :foreman_id, Foreman.all, :id, :full_name %>
+
+    <%= render partial: 'foremen/form', locals: {f: f} %>
+<% end %>
