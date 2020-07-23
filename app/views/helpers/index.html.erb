@@ -1,5 +1,7 @@
 <h1> Helpers Index </h1>
-
+<% if params[:foreman_id] %>
+<% end %>
 <% @helpers.each do |helper| %>
-    <%= helper.user.first_name %>
+    <%= link_to helper.user.first_name, helper_path(helper) %>
+    <%= link_to "edit", edit_helper_path(helper) %><br>
 <% end %>

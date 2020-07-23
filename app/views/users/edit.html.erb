@@ -1,5 +1,7 @@
 <h2>Edit <%= @user.first_name %></h2>
 
+<%= render partial: 'share/errors', locals: {obj: @user}%>
+
 <%= form_for @user do |f| %>
 
 
@@ -21,9 +23,20 @@
 
     <div>
         <%= f.fields_for :foreman do |b| %>
-            <%= b.label "foreman"%>
+            <%= b.label :user_id, "foreman"%>
             <%= b.check_box :user_id %>
         <% end %>
+    </div>
+
+    <div>
+      <%= f.fields_for :helper do |h| %>
+        <%= h.label :user_id, "Helper" %>
+        <%= h.check_box :user_id %>
+
+        <%= h.label :foreman_id, 'Select a Foreman'%>
+        <%= h.collection_select :foreman_id, Foreman.all, :id, :full_name %>
+
+      <% end %>
     </div>
 
   <div>

@@ -1,0 +1,12 @@
+<h1> Edit Helper </h1>
+
+<%= render partial: 'share/errors', locals: {obj: @helper} %>
+
+<%= form_for @helper do |f| %>
+    <%= f.label :foreman_id, 'Foreman' %>
+    <%= f.collection_select :foreman_id, Foreman.all, :id, :full_name %>
+
+    <%= render partial: 'foremen/form', locals: {f: f} %>
+<% end %>
+
+<%= button_to "Delete Helper", helper_path(@helper), method: :delete%>

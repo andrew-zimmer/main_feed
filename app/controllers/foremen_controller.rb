@@ -15,12 +15,22 @@ class ForemenController < ApplicationController
     def create
 
         if foreman_params[:user_id].blank?
-            foreman = Foreman.new.build_user(foreman_params[:user_attributes])
-            foreman.save
-            redirect_to '/'
+            @foreman = Foreman.new(foreman_params)
+            @foreman.build_user(foreman_params[:user_attributes])
+            if @foreman.save
+                redirect_to '/'
+            else
+                binding.pry
+                @foreman
+                render new_foreman_path
+            end
         else
-            User.find_by(id: foreman_params[:user_id]).build_foreman.save
-            redirect_to foremen_path
+            if User.find_by(id: foreman_params[:user_id]).build_foreman.save
+                redirect_to foreman_path
+            else
+                @foreman = Foreman.new
+                render new_foreman_path
+            end
         end
     end
 

@@ -12,10 +12,11 @@ class User < ApplicationRecord
 
   #relationships
   has_one :foreman
-  has_many :helpers
+  has_one :helper
 
   #nested form association
-  accepts_nested_attributes_for :foreman
+  accepts_nested_attributes_for :foreman, allow_destroy: true
+  accepts_nested_attributes_for :helper, allow_destroy: true
 
   #enum access control
   enum role: [:worker, :boss, :admin]
