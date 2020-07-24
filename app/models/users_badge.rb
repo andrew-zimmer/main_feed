@@ -1,6 +1,7 @@
 class UsersBadge < ApplicationRecord
   #validations
   validates :expiration, presence: true
+  validates_uniqueness_of :user_id, scope: :badge
 
   #relationships
   belongs_to :user
@@ -11,4 +12,5 @@ class UsersBadge < ApplicationRecord
   def full_name
     "#{self.user.full_name}"
   end
+
 end

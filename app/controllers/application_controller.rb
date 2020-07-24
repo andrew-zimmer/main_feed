@@ -5,9 +5,10 @@ class ApplicationController < ActionController::Base
         redirect_to root_url
     end
 
-    def current_user_admin?
-        current_user.admin?
-    end
+        def current_user_admin?
+            current_user.role == 'admin'
+        end
+
 
     protected
 
