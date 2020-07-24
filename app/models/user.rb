@@ -21,7 +21,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :helper, allow_destroy: true
 
   #enum access control
-  enum role: [:worker, :boss, :admin]
+  enum role: [:user, :admin, :super_admin]
 
   def self.from_omniauth(auth)
     self.find_or_create_by(uid: auth[:uid], provider: auth[:provider]) do |u|

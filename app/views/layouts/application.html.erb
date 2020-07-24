@@ -30,7 +30,7 @@
       </div>
       <div>
 
-      <% if signed_in? && current_user.role == 'admin'%>
+      <% if can? :manage, :all %>
         <%= link_to 'Create a New Foreman', new_foreman_path %>
       <% end %>
 

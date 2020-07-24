@@ -1,5 +1,5 @@
 class BadgesController < ApplicationController
-    before_action :current_user_admin?
+    load_and_authorize_resource
 
     def show
         badge_by_id

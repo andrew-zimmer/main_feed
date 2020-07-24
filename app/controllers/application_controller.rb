@@ -5,11 +5,6 @@ class ApplicationController < ActionController::Base
         redirect_to root_url
     end
 
-        def current_user_admin?
-            current_user.role == 'admin'
-        end
-
-
     protected
 
     def configure_permitted_parameters

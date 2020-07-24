@@ -1,6 +1,5 @@
 class UsersBadgesController < ApplicationController
     load_and_authorize_resource
-    before_action :current_user_admin?
 
     def show
     end
