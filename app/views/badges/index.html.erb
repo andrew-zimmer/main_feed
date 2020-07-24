@@ -1,0 +1,10 @@
+<h1> All Badges </h1>
+
+<ul>
+    <% @badges.each do |b| %>
+        <li> Issuer: <%= link_to b.issuer, badge_path(b) %> </li>
+        <p> Name: <%= b.name %> </p>
+        <%= link_to 'Edit', edit_badge_path(b) %>
+        <%= button_to 'Delete', badge_path(b), method: :delete %> <br><br>
+    <% end %>
+</ul>

@@ -1,0 +1,9 @@
+<h1> Edit Badge </h1>
+
+<%= render partial: 'share/errors', locals: {obj: @badge} %>
+
+<%= form_for @badge do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+    <%= f.submit%>
+    <%= button_to 'Delete', badge_path(f), method: :delete %> <br><br>
+<% end %>

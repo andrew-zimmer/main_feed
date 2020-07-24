@@ -1,0 +1,7 @@
+<h1> Show Page </h1>
+
+<%= render partial: 'share/errors', locals: {obj: @badge}%>
+
+<h2> <%= @badge.issuer %> </h2>
+<p> Name: <%= @badge.name%> </p>
+<%= link_to "Edit", edit_badge_path(@badge) %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_232732) do
+ActiveRecord::Schema.define(version: 2020_07_23_233247) do
 
   create_table "badges", force: :cascade do |t|
     t.string "issuer"
@@ -57,7 +57,19 @@ ActiveRecord::Schema.define(version: 2020_07_23_232732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_badges", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "badge_id", null: false
+    t.datetime "expiration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_users_badges_on_badge_id"
+    t.index ["user_id"], name: "index_users_badges_on_user_id"
+  end
+
   add_foreign_key "foremen", "users"
   add_foreign_key "helpers", "foremen"
   add_foreign_key "helpers", "users"
+  add_foreign_key "users_badges", "badges"
+  add_foreign_key "users_badges", "users"
 end

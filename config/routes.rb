@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
     get '/sign_up' => 'devise/registrations#new'
   end
 
+  #user foreman and helper routes and actions
   resources :users, :controller => 'users', only: [:edit, :update, :destroy]
 
   resources :foremen  do
@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   end
 
   resources :helpers
+
+  # badge users_baage routes and actions
+  resources :badges do
+    resources :users_badges, only: %i[index new create]
+  end
+
+  resources :users_badges
 end

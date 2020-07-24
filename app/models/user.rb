@@ -13,6 +13,8 @@ class User < ApplicationRecord
   #relationships
   has_one :foreman
   has_one :helper
+  has_many :users_badges
+  has_many :badges, through: :users_badges
 
   #nested form association
   accepts_nested_attributes_for :foreman, allow_destroy: true
