@@ -1,0 +1,5 @@
+<h1> User Badge </h1>
+
+<h3> <%= @users_badge.user.full_name %> </h3>
+<p> Badge: <%= link_to @users_badge.badge.full_name, badge_users_badges_path(@users_badge.badge) %> </p>
+<p> Expiration: <%= @users_badge.expiration.to_formatted_s(:long) %> </p>

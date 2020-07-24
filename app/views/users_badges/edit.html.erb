@@ -1,0 +1,11 @@
+<h2> Edit Users Badge </h2>
+
+<%= render partial: 'share/errors', locals: {obj: @users_badge} %>
+
+<%= form_for @users_badge do |f| %>
+
+    <%= render partial: 'form', locals: {f: f} %>
+
+    <%= f.submit %>
+
+<% end %>

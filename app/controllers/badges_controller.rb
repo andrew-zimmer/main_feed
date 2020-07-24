@@ -1,4 +1,6 @@
 class BadgesController < ApplicationController
+    before_action :current_user_admin?
+
     def show
         @badge = Badge.find_by(id: params[:id])
     end
@@ -36,7 +38,7 @@ class BadgesController < ApplicationController
 
     def destroy
         Badge.find_by(id: params[:id]).destroy
-        render badges_path
+        redirect_to badges_path
     end
 
     private

@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
     rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
         redirect_to root_url
-      end
+    end
+
+    def current_user_admin?
+        current_user.admin?
+    end
 
     protected
 
