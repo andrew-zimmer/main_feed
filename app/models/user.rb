@@ -38,4 +38,12 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def self.all_but_foreman
+    self.left_outer_joins(:foreman).where(foremen: {id: nil})
+  end
+
+  def self.foreman_all
+    self.joins(:foreman)
+  end
+
 end

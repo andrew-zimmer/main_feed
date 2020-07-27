@@ -1,0 +1,10 @@
+<ul>
+    <% t.user.users_badges.each do |b| %>
+        <li>
+            Issuer/Name: <%= link_to b.badge.full_name, badge_path(b.badge) %>
+        </li>
+        <li>
+            Expiration: <%= b.expiration.strftime("%B %d, %Y") %>
+        </li>
+    <% end %>
+</ul>

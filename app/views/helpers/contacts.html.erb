@@ -1,0 +1,5 @@
+<ul>
+    <% @helpers.each do |f| %>
+      <%= render partial: 'share/contacts', locals: {f: f} %>
+    <% end %>
+</ul>

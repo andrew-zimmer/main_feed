@@ -28,6 +28,12 @@
 
  @import "bootstrap/scss/bootstrap";
 
+ .field_with_errors {
+   border: solid;
+   border-color: red;
+   width: 190px;
+ }
+
  :root {
    --blue: #007bff;
    --indigo: #6610f2;

@@ -9,4 +9,17 @@ class Foreman < ApplicationRecord
   def full_name
     "#{self.user.first_name} #{self.user.last_name}"
   end
+
+  def email
+    user.email
+  end
+
+  def phone_number
+    user.phone_number
+  end
+
+  def self.current_foreman
+    self.find_by(id: params[:id])
+  end
+
 end

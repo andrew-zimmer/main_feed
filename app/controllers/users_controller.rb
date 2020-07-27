@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
     load_and_authorize_resource
 
+    def contacts
+        @users = User.all
+    end
+
     def show
     end
 
     def index
     end
 
-    def new
-    end
-
-    def create
-    end
 
     def edit
         @user = User.find_by(id: params[:id])

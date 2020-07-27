@@ -1,16 +1,17 @@
 class HelpersController < ApplicationController
     load_and_authorize_resource
 
-    def index
+    def contacts
+        @helpers = Helper.all
+    end
 
+    def index
         if params[:foreman_id]
             @foreman = Foreman.find_by(id: params[:foreman_id])
             @helpers = @foreman.helpers
-
         else
             @helpers = Helper.all
         end
-
     end
 
     def show
@@ -18,8 +19,9 @@ class HelpersController < ApplicationController
     end
 
     def new
-        if params[:foreman_id] && Foreman.find_by(id: params[:foreman_id])
-            redirect_to root_path
+        if params[:foreman_id] && @foreman= Foreman.find_by(id: params[:foreman_id])
+            @helper = @foreman.helpers.build
+            @helper.build_user
         else
             @helper = Helper.new(id: params[:foreman_id])
             @helper.build_user
@@ -28,8 +30,9 @@ class HelpersController < ApplicationController
     end
 
     def create
-        @helper = Helper.new(helper_params)
-        @helper.build_user(helper_params[:user_attributes])
+        user = User.new(helper_params[:user_attributes])
+        user.save
+        @helper = user.build_helper(foreman_id: helper_params[:foreman_id])
         if @helper.save
             redirect_to helper_path(@helper)
         else
@@ -64,7 +67,9 @@ class HelpersController < ApplicationController
     def edit_helper_params
         params[:helper][:user_attributes].delete(:password) if params[:helper][:user_attributes][:password].blank?
         params[:helper][:user_attributes].delete(:password_confirmation) if params[:helper][:user_attributes][:password].blank? and params[:helper][:user_attributes][:password_confirmation].blank?
+    end
 
-
+    def find_foreman
+        Foreman.find_by(id: params[:foreman_id])
     end
 end

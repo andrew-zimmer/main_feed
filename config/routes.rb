@@ -10,12 +10,16 @@ Rails.application.routes.draw do
   end
 
   #user foreman and helper routes and actions
-  resources :users, :controller => 'users', only: [:edit, :update, :destroy]
+  get '/users/contacts' => 'users#contacts'
+  resources :users, :controller => 'users', only: [:edit, :update, :destroy, :index, :show]
+
+  get "/foremen/contacts" => "foremen#contacts"
 
   resources :foremen  do
     resources :helpers, only: [:index, :new]
   end
 
+  get "/helpers/contacts" => 'helpers#contacts'
   resources :helpers
 
   # badge users_baage routes and actions

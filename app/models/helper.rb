@@ -1,5 +1,6 @@
 class Helper < ApplicationRecord
   validates :user_id, presence: true
+  validates :foreman_id, presence: false
 
   #associations
   belongs_to :user
@@ -13,4 +14,15 @@ class Helper < ApplicationRecord
     "#{self.user.first_name} #{self.user.last_name}"
   end
 
+  def email
+    user.email
+  end
+
+  def phone_number
+    user.phone_number
+  end
+
+  def all_but_foreman
+    User.left_outer_joins(:foreman).where(foremen: {id: nil})
+end
 end

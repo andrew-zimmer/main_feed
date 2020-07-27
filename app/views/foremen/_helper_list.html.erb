@@ -1,0 +1,7 @@
+<ul>
+    <% t.helpers.each do |h| %>
+        <li>
+            <%= link_to h.full_name, helper_path(h) %>
+        </li>
+    <% end %>
+</ul>

@@ -1,6 +1,10 @@
 class ForemenController < ApplicationController
     load_and_authorize_resource
 
+    def contacts
+        @foremen = Foreman.all
+    end
+
     def index
     end
 
@@ -16,12 +20,13 @@ class ForemenController < ApplicationController
     def create
 
         if foreman_params[:user_id].blank?
-            @foreman = Foreman.new(foreman_params)
-            @foreman.build_user(foreman_params[:user_attributes])
+            params[:foreman].delete(:user_id)
+            user = User.new(foreman_params[:user_attributes])
+            user.save
+            @foreman = user.build_foreman
             if @foreman.save
-                redirect_to '/'
+                redirect_to foreman_path(@foreman)
             else
-                binding.pry
                 @foreman
                 render new_foreman_path
             end
