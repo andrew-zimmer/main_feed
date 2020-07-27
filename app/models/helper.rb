@@ -1,4 +1,5 @@
 class Helper < ApplicationRecord
+  validates :user_id, presence: true
 
   #associations
   belongs_to :user
@@ -11,4 +12,5 @@ class Helper < ApplicationRecord
   def full_name
     "#{self.user.first_name} #{self.user.last_name}"
   end
+
 end

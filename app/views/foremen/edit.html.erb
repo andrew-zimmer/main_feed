@@ -3,6 +3,11 @@
 <%= render partial: 'share/errors', locals: {obj: @foreman} %>
 
 <%= form_for @foreman do |f| %>
-    <%= render partial: 'form', locals: {f: f}%>
+
+    <%= f.fields_for :user do |u| %>
+        <%= render partial: 'users/form', locals: {f: u} %>
+    <% end %>
+
+    <%= f.submit %>
 <% end %>
 <%= button_to 'Delete Foreman', foreman_path(@foreman), method: :delete %>

@@ -1,0 +1,2 @@
+<%= f.label :foreman_id, 'Foreman' %>
+<%= f.collection_select :foreman_id, Foreman.all, :id, :full_name, prompt: true %>

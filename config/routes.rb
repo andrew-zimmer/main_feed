@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, :controller => 'users', only: [:edit, :update, :destroy]
 
   resources :foremen  do
-    resources :helpers, only: [:index, :new, :create]
+    resources :helpers, only: [:index, :new]
   end
 
   resources :helpers

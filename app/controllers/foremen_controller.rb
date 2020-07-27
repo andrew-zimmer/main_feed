@@ -26,8 +26,10 @@ class ForemenController < ApplicationController
                 render new_foreman_path
             end
         else
-            if User.find_by(id: foreman_params[:user_id]).build_foreman.save
-                redirect_to foreman_path
+            user = User.find_by(id: foreman_params[:user_id])
+            user.helper.delete if !!user.helper
+            if !!user.foreman || user.build_foreman.save
+                redirect_to foreman_path(user.foreman)
             else
                 @foreman = Foreman.new
                 render new_foreman_path

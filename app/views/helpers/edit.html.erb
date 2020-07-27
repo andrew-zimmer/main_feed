@@ -3,10 +3,13 @@
 <%= render partial: 'share/errors', locals: {obj: @helper} %>
 
 <%= form_for @helper do |f| %>
-    <%= f.label :foreman_id, 'Foreman' %>
-    <%= f.collection_select :foreman_id, Foreman.all, :id, :full_name %>
+    <%= render partial: 'foreman_option', locals: {f: f} %>
 
-    <%= render partial: 'foremen/form', locals: {f: f} %>
+    <%= f.fields_for :user do |u| %>
+        <%= render partial: 'users/form', locals: {f: u} %>
+    <% end %>
+
+    <%= f.submit %>
 <% end %>
 
 <%= button_to "Delete Helper", helper_path(@helper), method: :delete%>

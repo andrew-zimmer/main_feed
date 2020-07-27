@@ -1,5 +1,3 @@
 
-    <%= f.fields_for :user do |u| %>
-        <%= render partial: 'users/form', locals: {f: u} %>
-    <% end %>
-    <%= f.submit%>
+<%= f.label :user_id, 'Select a new foreman'%>
+<%= f.collection_select :user_id, User.all, :id, :first_name, prompt: true %>
