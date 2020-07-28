@@ -1,5 +1,12 @@
-<h1> View Helper </h1>
 
-<p>Name: <%= @helper.full_name %></p>
-<p>Foreman: <%= link_to @helper.foreman.full_name, foreman_path(@helper.foreman) %></p>
-<%= link_to 'Edit', edit_helper_path(@helper) %>
+<h1><%= @helper.full_name %></h1>
+      <ul>
+        <li><h4>Email: <%= @helper.email %> </h4></li>
+        <li><h4>Phone #: <%= @helper.phone_number %> </h4></li>
+        <li><h4>Foreman: <%= link_to @helper.foreman.full_name, foreman_path(@helper.foreman) %></h4></li>
+        <li><h4>Badges: <%=  render partial: 'share/badges', locals: {t: @helper} %> </h4></li>
+    </ul>
+
+<%= link_to 'Edit', edit_helper_path(@helper) %> /
+<%= link_to 'Add Badge', new_user_users_badge_path(@helper.user) %> /
+<%= link_to "Back", :back %>

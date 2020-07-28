@@ -1,8 +1,34 @@
+<%= link_to "Back", :back %>
 <ul>
-    <% @users.each do |t| %>
+    <li><h3><%= link_to 'Foreman:', foremen_path %> </h3></li>
+    <% @users.foreman_all.each do |t| %>
+    <ul>
         <li>
-            <h3><%= link_to_path(t) %></h3>
+            <h4><%= link_to_path(t) %></h4>
         </li>
+    </ul>
 
     <% end %>
+    <hr>
+
+    <li><h3>Helpers: </h3></li>
+      <% @users.helper_all.each do |t| %>
+        <ul>
+            <li>
+                <h4><%= link_to_path(t) %></h4>
+            </li>
+        </ul>
+    <% end %>
+
+    <hr>
+
+    <li><h3>Other Users: </h3></li>
+      <% @users.all_but_foreman.all_but_helper.each do |t| %>
+        <ul>
+            <li>
+                <h4><%= link_to_path(t) %></h4>
+            </li>
+        </ul>
+    <% end %>
 </ul>
+<%= link_to "Back", :back %>

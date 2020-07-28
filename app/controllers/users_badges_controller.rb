@@ -48,6 +48,9 @@ class UsersBadgesController < ApplicationController
     def new_route_nested?
         if params[:badge_id]
             @users_badge = Badge.find_by(id: params[:badge_id]).users_badges.build
+        elsif params[:user_id]
+            @users_badge = User.find_by(id: params[:user_id]).users_badges.build
+            @users_badge.build_badge
         else
             @users_badge.build_badge
         end

@@ -8,4 +8,5 @@
 
 <%= link_to 'Edit', edit_foreman_path(@foreman) if current_user.super_admin?%> /
 <%= link_to 'Add Helper', new_foreman_helper_path(@foreman) %> /
-<%= link_to 'Add Badge', new_users_badge_path %>
+<%= link_to 'Add Badge', new_user_users_badge_path(@foreman.user) %> /
+<%= link_to "Back", :back %>

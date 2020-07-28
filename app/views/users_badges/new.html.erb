@@ -1,4 +1,4 @@
-<h1> New user badge </h1>
+<h1> Create a new badge association </h1>
 
 <%= render partial: 'share/errors', locals: {obj: @users_badge} %>
 
@@ -6,6 +6,7 @@
 
     <%= render partial: 'form', locals: {f: f} %><br>
 
+    <h4> Or create a new badge </h4>
     <%=  f.fields_for :badge do |b| %>
         <%= new_badge_form_if_nested_route(b) %>
     <% end %>

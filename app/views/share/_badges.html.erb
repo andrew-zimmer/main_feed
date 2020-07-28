@@ -3,8 +3,10 @@
         <li>
             Issuer/Name: <%= link_to b.badge.full_name, badge_path(b.badge) %>
         </li>
-        <li>
-            Expiration: <%= b.expiration.strftime("%B %d, %Y") %>
-        </li>
+        <ul>
+            <li>
+                Expiration: <%= b.expiration.strftime("%B %d, %Y") %>
+            </li>
+        </ul><hr>
     <% end %>
 </ul>

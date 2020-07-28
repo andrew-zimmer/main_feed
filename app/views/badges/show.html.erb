@@ -1,7 +1,8 @@
-<h1> Show Page </h1>
+
 
 <%= render partial: 'share/errors', locals: {obj: @badge}%>
 
-<h2> <%= @badge.issuer %> </h2>
-<p> Name: <%= @badge.name%> </p>
-<%= link_to "Edit", edit_badge_path(@badge) %>
+<h1> <%= @badge.issuer %> </h1>
+<h4> Name: <%= @badge.name%> </h4>
+<%= button_to "Edit", edit_badge_path(@badge), method: :get %>
+<%= button_to 'Delete', badge_path(@badge), method: :delete %>

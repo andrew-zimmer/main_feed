@@ -18,7 +18,7 @@
 
     <div>
         <%= f.label :role, 'Access Level' %><br>
-        <%= f.select :role, [['basic', 'worker'], ['admin', 'boss'], ['super admin', 'admin']], selected: @user.role %>
+        <%= f.select :role, [['basic', 'user'], ['admin', 'admin'], ['super admin', 'super_admin']], selected: @user.role %>
     </div>
 
     <div>
@@ -41,7 +41,7 @@
 
   <div>
     <%= f.label :phone_number %>
-    <%= f.number_field :phone_number %>
+    <%= f.phone_field :phone_number %>
   </div>
 
 

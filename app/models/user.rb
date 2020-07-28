@@ -35,15 +35,23 @@ class User < ApplicationRecord
   end
 
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 
   def self.all_but_foreman
     self.left_outer_joins(:foreman).where(foremen: {id: nil})
   end
 
+  def self.all_but_helper
+    self.left_joins(:helper).where(helpers: {id: nil})
+  end
+
   def self.foreman_all
     self.joins(:foreman)
+  end
+
+  def self.helper_all
+    self.joins(:helper)
   end
 
 end

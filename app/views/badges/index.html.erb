@@ -1,10 +1,15 @@
 <h1> All Badges </h1>
 
+
+<hr>
 <ul>
-    <% @badges.each do |b| %>
-        <li> Issuer: <%= link_to b.issuer, badge_path(b) %> </li>
-        <p> Name: <%= b.name %> </p>
-        <%= link_to 'Edit', edit_badge_path(b) %>
-        <%= button_to 'Delete', badge_path(b), method: :delete %> <br><br>
+<% Badge.all.collect{|b| b.issuer}.uniq.each do |badge| %>
+    <li> <h3> <%= badge %> </h3> </li>
+    <ul>
+    <% Badge.group_badges(badge).each do |b|%>
+        <li><%= link_to b.name, badge_path(b) %> </li>
     <% end %>
+    </ul>
+    <hr>
+<% end %>
 </ul>

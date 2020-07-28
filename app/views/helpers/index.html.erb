@@ -1,11 +1,15 @@
-<h1> Helpers Index </h1>
-<% if params[:foreman_id] %>
-        <h2> Here's all <%= @foreman.full_name %>'s helpers </h2>
-<% end %>
+
+<%= index_title_if_nested_or_not %>
 
 <ul>
-<% @helpers.each do |helper| %>
-    <li><%= link_to helper.user.full_name, helper_path(helper) %></li>
-    <%= link_to "edit", edit_helper_path(helper) %><br>
-<% end %>
+    <% @helpers.each do |helper| %>
+        <li>
+            <h4>
+                <%= link_to helper.user.full_name, helper_path(helper) %>
+            </h4>
+        </li>
+    <% end %>
 </ul>
+
+<%= buttom_route_if_nested_or_not %> /
+<%= link_to "Back", :back %>

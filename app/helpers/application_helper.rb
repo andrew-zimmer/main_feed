@@ -13,6 +13,16 @@ module ApplicationHelper
         end
     end
 
+    def link_path(user)
+        if user.foreman
+            foreman_path(user.foreman)
+        elsif user.helper
+            helper_path(user.helper)
+        else
+            user_path(user)
+        end
+    end
+
     def sign_in_sign_up_or_sign_out
         if user_signed_in?
             link_to "Logout", logout_path, method: :delete

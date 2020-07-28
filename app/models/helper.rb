@@ -22,7 +22,5 @@ class Helper < ApplicationRecord
     user.phone_number
   end
 
-  def all_but_foreman
-    User.left_outer_joins(:foreman).where(foremen: {id: nil})
-end
+
 end

@@ -12,4 +12,8 @@ class Badge < ApplicationRecord
         "#{self.issuer}, #{self.name}"
     end
 
+    def self.group_badges(group)
+        self.where(issuer: group)
+    end
+
 end
