@@ -1,6 +1,32 @@
-<h1> Welcome Home <%= current_user.first_name if signed_in? %> </h1>
-<%= link_to 'Edit Yourself', edit_user_registration_path(current_user.id) if signed_in?%>
+<div class= "container full-height">
+    <div class="row mt-1 mb-1">
+        <div class="col-lg-12 border border-solid rounded text-center">
+            <h1> Welcome Home <%= current_user.first_name if signed_in? %> </h1>
+        </div>
 
-<% User.all.each do |t| %>
-    <%= link_to t.first_name, edit_user_path(t) %>
-<% end %>
+
+
+
+
+        <div class="col-lg-12 border border-solid rounded ">
+            <div style="height: 400px; width: auto;">
+                <h2> Schedule Coming Soon </h2>
+            </div>
+        </div>
+
+
+
+        <div class= "col-sm-6 border border-solid ">
+            <h2> Projects Coming Soon</h2>
+        </div>
+
+
+
+        <div class="col-sm-6 text-center border border-solid  pb-3">
+            <h2> Contacts </h2>
+            <%= button_to "Office", users_contacts_path, method: :get, class: "w-100 rounded mt-1 mb-1"%>
+            <%= button_to "Foreman", foremen_contacts_path, method: :get, class: "w-100 rounded mt-1 mb-1"%>
+            <%= button_to "Helpers", helpers_contacts_path, method: :get, class: "w-100 rounded mt-1 mb-1"%>
+        </div>
+    </div>
+</div>
