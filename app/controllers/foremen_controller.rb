@@ -18,41 +18,18 @@ class ForemenController < ApplicationController
     end
 
     def create
-
-        if foreman_params[:user_id].blank?
-            params[:foreman].delete(:user_id)
-            user = User.new(foreman_params[:user_attributes])
-            user.save
-            @foreman = user.build_foreman
-            if @foreman.save
-                redirect_to foreman_path(@foreman)
-            else
-                @foreman
-                render new_foreman_path
-            end
-        else
-            user = User.find_by(id: foreman_params[:user_id])
-            user.helper.delete if !!user.helper
-            if !!user.foreman || user.build_foreman.save
-                redirect_to foreman_path(user.foreman)
-            else
-                @foreman = Foreman.new
-                render new_foreman_path
-            end
-        end
+        create_foreman_if_user_id_is_blank_in_params
+        else_create_foreman_from_user_id_in_params
     end
 
     def edit
         @foreman = find_foreman_with_params
-
     end
 
     def update
-
         foreman = find_foreman_with_params
         delete_password_attributes_from_params_if_not_present
         foreman.user.update(foreman_params[:user_attributes])
-
         foreman.save
         redirect_to foreman_path(foreman)
     end
@@ -78,5 +55,33 @@ class ForemenController < ApplicationController
 
     def redirect_to_root
         redirect_to root_path
+    end
+
+    def create_foreman_if_user_id_is_blank_in_params
+        if foreman_params[:user_id].blank?
+            params[:foreman].delete(:user_id)
+            user = User.new(foreman_params[:user_attributes])
+            user.save
+            @foreman = user.build_foreman
+            if @foreman.save
+                redirect_to foreman_path(@foreman)
+            else
+                @foreman
+                render new_foreman_path
+            end
+        end
+    end
+
+    def else_create_foreman_from_user_id_in_params
+        if !foreman_params[:user_id].blank?
+            user = User.find_by(id: foreman_params[:user_id])
+            user.helper.delete if !!user.helper
+            if !!user.foreman || user.build_foreman.save
+                redirect_to foreman_path(user.foreman)
+            else
+                @foreman = Foreman.new
+                render new_foreman_path
+            end
+        end
     end
 end

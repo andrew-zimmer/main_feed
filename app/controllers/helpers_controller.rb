@@ -6,43 +6,25 @@ class HelpersController < ApplicationController
     end
 
     def index
-        if params[:foreman_id]
-            @foreman = Foreman.find_by(id: params[:foreman_id])
-            @helpers = @foreman.helpers
-        else
-            @helpers = Helper.all
-        end
+        set_index_instance_variable_based_on_route
     end
 
     def show
-        @helper = Helper.find_by(id: params[:id])
+        @helper = find_helper_by_params
     end
 
     def new
-        if params[:foreman_id] && @foreman= Foreman.find_by(id: params[:foreman_id])
-            @helper = @foreman.helpers.build
-            @helper.build_user
-        else
-            @helper = Helper.new(id: params[:foreman_id])
-            @helper.build_user
-            @helper.foreman = Foreman.find_by(id: params[:foreman_id])
-        end
+        set_varibles_based_on_routes
     end
 
     def create
-        user = User.new(helper_params[:user_attributes])
-        user.save
+        user = User.create(helper_params[:user_attributes])
         @helper = user.build_helper(foreman_id: helper_params[:foreman_id])
-        if @helper.save
-            redirect_to helper_path(@helper)
-        else
-            @helper
-            render new_helper_path
-        end
+        save_new_helper_else_redirect
     end
 
     def edit
-        @helper = Helper.find_by(id: params[:id])
+        @helper = find_helper_by_params
     end
 
     def update
@@ -60,8 +42,13 @@ class HelpersController < ApplicationController
     end
 
     private
+
     def helper_params
         params.require(:helper).permit(:user_id, :foreman_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number ])
+    end
+
+    def find_helper_by_params
+        Helper.find_by(id: params[:id])
     end
 
     def edit_helper_params
@@ -72,4 +59,33 @@ class HelpersController < ApplicationController
     def find_foreman
         Foreman.find_by(id: params[:foreman_id])
     end
+
+    def set_index_instance_variable_based_on_route
+        if params[:foreman_id]
+            @foreman = Foreman.find_by(id: params[:foreman_id])
+            @helpers = @foreman.helpers
+        else
+            @helpers = Helper.all
+        end
+    end
+
+    def set_varibles_based_on_routes
+        if params[:foreman_id] && @foreman= Foreman.find_by(id: params[:foreman_id])
+            @helper = @foreman.helpers.build
+            @helper.build_user
+        else
+            @helper = Helper.new(foreman_id: params[:foreman_id])
+            @helper.build_user
+        end
+    end
+
+    def save_new_helper_else_redirect
+        if @helper.save
+            redirect_to helper_path(@helper)
+        else
+            @helper
+            render new_helper_path
+        end
+    end
+
 end

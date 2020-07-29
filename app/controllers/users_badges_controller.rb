@@ -13,8 +13,7 @@ class UsersBadgesController < ApplicationController
     end
 
     def create
-        params[:users_badge].delete(:badge_attributes) if users_badge_params[:badge_attributes][:issuer].blank? && users_badge_params[:badge_attributes][:issuer].blank?
-
+        delete_badge_attr_if_params_issuer_and_name_blank
         @users_badge = UsersBadge.new(users_badge_params)
         new_users_badge_save_redirect
     end
@@ -81,5 +80,11 @@ class UsersBadgesController < ApplicationController
             render 'edit'
         end
     end
+
+    def delete_badge_attr_if_params_issuer_and_name_blank
+        params[:users_badge].delete(:badge_attributes) if users_badge_params[:badge_attributes][:issuer].blank? && users_badge_params[:badge_attributes][:name].blank?
+    end
+
+
 
 end
