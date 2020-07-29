@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   # badge users_baage routes and actions
   resources :badges do
-    resources :users_badges, only: %i[index new create]
+    resources :users_badges, only: %i[index new]
   end
 
   resources :users_badges

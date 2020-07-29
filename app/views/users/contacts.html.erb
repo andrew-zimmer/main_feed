@@ -1,5 +1,20 @@
+<h2>Foremen: </h2>
 <ul>
-    <% @users.each do |f| %>
+    <% @users.foreman_all.each do |f| %>
+        <%= render partial: 'share/contacts', locals: {f: f} %>
+    <% end %>
+</ul>
+<hr>
+<h2>Helpers: </h2>
+<ul>
+    <% @users.helper_all.each do |f| %>
+        <%= render partial: 'share/contacts', locals: {f: f} %>
+    <% end %>
+</ul>
+<hr>
+<h2>Office Workers: </h2>
+<ul>
+    <% @users.all_but_foreman.all_but_helper.each do |f| %>
         <%= render partial: 'share/contacts', locals: {f: f} %>
     <% end %>
 </ul>

@@ -3,3 +3,5 @@
 <h3> <%= link_to @users_badge.user.full_name, link_path(@users_badge.user) %> </h3>
 <p> Badge: <%= link_to @users_badge.badge.full_name, badge_users_badges_path(@users_badge.badge) %> </p>
 <p> Expiration: <%= @users_badge.expiration.to_formatted_s(:long) %> </p>
+<%= link_to "Edit", edit_users_badge_path(@users_badge) %> /
+<%= link_to "Back", :back %>

@@ -28,12 +28,22 @@ class UsersBadgesController < ApplicationController
 
     def destroy
         @users_badge.delete
-        redirect_to users_badges_path
+        redirect_user_foreman_or_helper_destroy
     end
 
     private
     def users_badge_params
         params.require(:users_badge).permit(:user_id, :badge_id, :expiration, badge_attributes: %i[issuer name])
+    end
+
+    def redirect_user_foreman_or_helper_destroy
+        if @users_badge.user.foreman
+            redirect_to foreman_path(@users_badge.user.foreman)
+        elsif @users_badge.user.helper
+            redirect_to helper_path(@users_badge.user.helper)
+        else
+            redirect_to users_badges_path
+        end
     end
 
     def index_route_nested_or_not

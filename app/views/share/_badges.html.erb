@@ -1,12 +1,15 @@
 <ul>
-    <% t.user.users_badges.each do |b| %>
+    <% user.users_badges.each do |b| %>
         <li>
-            Issuer/Name: <%= link_to b.badge.full_name, badge_path(b.badge) %>
+            Issuer/Name: <%= link_to b.badge.full_name, users_badge_path(b) %>
         </li>
         <ul>
             <li>
                 Expiration: <%= b.expiration.strftime("%B %d, %Y") %>
             </li>
-        </ul><hr>
+        </ul>
+        <%= button_to 'Remove', users_badge_path(b), method: :delete %>
+        <%= button_to 'Edit', edit_users_badge_path(b), method: :get %>
+        <hr>
     <% end %>
 </ul>

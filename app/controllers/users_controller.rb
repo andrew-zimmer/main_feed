@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     load_and_authorize_resource
 
     def contacts
-        @users = User.all
+        @users = User.all.order_by_name
     end
 
     def show

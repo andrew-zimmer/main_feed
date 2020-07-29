@@ -54,4 +54,8 @@ class User < ApplicationRecord
     self.joins(:helper)
   end
 
+  def self.order_by_name
+    self.order(:first_name)
+  end
+
 end

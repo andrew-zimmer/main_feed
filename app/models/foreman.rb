@@ -22,4 +22,6 @@ class Foreman < ApplicationRecord
     self.find_by(id: params[:id])
   end
 
+
+
 end

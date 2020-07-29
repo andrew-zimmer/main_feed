@@ -4,7 +4,7 @@
         <li><h4>Email: <%= @helper.email %> </h4></li>
         <li><h4>Phone #: <%= @helper.phone_number %> </h4></li>
         <li><h4>Foreman: <%= link_to @helper.foreman.full_name, foreman_path(@helper.foreman) %></h4></li>
-        <li><h4>Badges: <%=  render partial: 'share/badges', locals: {t: @helper} %> </h4></li>
+        <li><h4>Badges: <%=  render partial: 'share/badges', locals: {user: @helper.user} %> </h4></li>
     </ul>
 
 <%= link_to 'Edit', edit_helper_path(@helper) %> /

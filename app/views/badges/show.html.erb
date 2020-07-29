@@ -3,6 +3,7 @@
 <%= render partial: 'share/errors', locals: {obj: @badge}%>
 
 <h1> <%= @badge.issuer %> </h1>
-<h4> Name: <%= @badge.name%> </h4>
+<h4> <%= @badge.name%> Badge </h4>
 <%= button_to "Edit", edit_badge_path(@badge), method: :get %>
 <%= button_to 'Delete', badge_path(@badge), method: :delete %>
+<%= link_to "Back", :back %>

@@ -1,6 +1,7 @@
-<h1> User Badge Index </h1>
+<%= title_if_nest_or_not %>
 
-<%= new_nested_badge_path %>
+<%= new_nested_badge_path %> /
+<%= link_to "Back", :back %>
 
 <ul>
 <% @users_badges.each do |f| %>
@@ -9,5 +10,8 @@
     <p> Expiration: <%= f.expiration.to_formatted_s(:long) %> </p>
     <%= link_to 'Edit', edit_users_badge_path(f)%>
     <%= button_to 'Delete', users_badge_path(f), method: :delete %>
+    <hr>
 <% end %>
 </ul>
+
+<%= link_to "Back", :back %>

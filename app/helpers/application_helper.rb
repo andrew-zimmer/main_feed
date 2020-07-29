@@ -43,4 +43,20 @@ module ApplicationHelper
         end
     end
 
+    def link_path_for_foreman_helper_or_user(user)
+        if user.class == User
+            if user.foreman
+                link_to user.full_name, foreman_path(user.foreman)
+            elsif user.helper
+                link_to user.full_name, helper_path(user.helper)
+            else
+                link_to user.full_name, user_path(user)
+            end
+        elsif user.class == Foreman
+            link_to user.full_name, foreman_path(user)
+        else
+            link_to user.full_name, helper_path(user)
+        end
+    end
+
 end
