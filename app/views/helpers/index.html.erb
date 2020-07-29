@@ -11,5 +11,5 @@
     <% end %>
 </ul>
 
-<%= buttom_route_if_nested_or_not %> /
+<%= buttom_route_if_nested_or_not + "/" if can? :manage, Helper %>
 <%= link_to "Back", :back %>

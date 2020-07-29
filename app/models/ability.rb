@@ -10,7 +10,6 @@ class Ability
       can :manage, :all
     elsif user.admin?
       can :read, :all
-      can :manage, Foreman, user_id: user.id
     else
       can :read, :all
     end

@@ -8,8 +8,8 @@
                 Expiration: <%= b.expiration.strftime("%B %d, %Y") %>
             </li>
         </ul>
-        <%= button_to 'Remove', users_badge_path(b), method: :delete %>
-        <%= button_to 'Edit', edit_users_badge_path(b), method: :get %>
+        <%= button_to 'Remove', users_badge_path(b), method: :delete if can? :manage, UsersBadge %>
+        <%= button_to 'Edit', edit_users_badge_path(b), method: :get if can? :manage, UsersBadge %>
         <hr>
     <% end %>
 </ul>

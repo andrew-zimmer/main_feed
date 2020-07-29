@@ -1,6 +1,6 @@
 <%= render partial: 'share/show_info', locals: {user: @foreman} %>
 
-<%= link_to 'Edit', edit_foreman_path(@foreman) if current_user.super_admin?%> /
-<%= link_to 'Add Helper', new_foreman_helper_path(@foreman) %> /
-<%= link_to 'Add Badge', new_user_users_badge_path(@foreman.user) %> /
+<%= link_to 'Edit', edit_foreman_path(@foreman) + '/' if can? :manage, Foreman %>
+<%= link_to 'Add Helper', new_foreman_helper_path(@foreman) + "/" if can? :manage, Foreman %>
+<%= link_to 'Add Badge', new_user_users_badge_path(@foreman.user) + "/" if can? :manage, Foreman %>
 <%= link_to "Back", :back %>

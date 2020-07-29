@@ -2,10 +2,11 @@ class ForemenController < ApplicationController
     load_and_authorize_resource
 
     def contacts
-        @foremen = Foreman.all
+        @foremen = Foreman.all.sort_by_name
     end
 
     def index
+
     end
 
     def show

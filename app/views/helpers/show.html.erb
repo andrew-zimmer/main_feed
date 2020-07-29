@@ -1,5 +1,5 @@
 <%= render partial: 'share/show_info', locals: {user: @helper} %>
 
-<%= link_to 'Edit', edit_helper_path(@helper) %> /
-<%= link_to 'Add Badge', new_user_users_badge_path(@helper.user) %> /
+<%= link_to 'Edit', edit_helper_path(@helper) + "/" if can? :manage, Helper%>
+<%= link_to 'Add Badge', new_user_users_badge_path(@helper.user) + "/" if can? :manage, Helper%>
 <%= link_to "Back", :back %>

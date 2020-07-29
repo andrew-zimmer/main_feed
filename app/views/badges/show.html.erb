@@ -4,8 +4,9 @@
 
 <h1> <%= @badge.issuer %> </h1>
 <h4> <%= @badge.name%> Badge </h4>
-<%= button_to "Edit", edit_badge_path(@badge), method: :get %>
-<%= button_to 'Delete', badge_path(@badge), method: :delete %>
+<%= button_to "Edit", edit_badge_path(@badge), method: :get if can? :manage, Badge %>
+<%= button_to 'Delete', badge_path(@badge), method: :delete if can? :manage, Badge %>
+<hr>
 <h4> All badge holders: </h4>
 <ul>
     <% @badge.users_badges.order_by_name.each do |u| %>

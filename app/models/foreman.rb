@@ -26,6 +26,9 @@ class Foreman < ApplicationRecord
     self.find_by(id: params[:id])
   end
 
+  def self.sort_by_name
+    self.joins(:user).order(:first_name)
+  end
 
 
 end

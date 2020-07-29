@@ -2,7 +2,7 @@
         <h4><%= link_path_for_foreman_helper_or_user(f) %></h4>
         <ul>
             <li>
-                Email: <%= f.email %>
+                Email: <%= mail_to f.email, f.email %>
             </li>
             <li>
                 Phone #: <%= f.phone_number %>

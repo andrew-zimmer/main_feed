@@ -1,7 +1,7 @@
 module HelpersHelper
     def index_title_if_nested_or_not
          if params[:foreman_id]
-            content_tag(:h1, " Here's all l#{ink_to @foreman.full_name, foreman_path(@foreman)}'s helpers")
+            render partial: 'helpers/nested_title', locals: {foreman: @foreman}
          else
             content_tag(:h1, "Helper's Index")
          end
