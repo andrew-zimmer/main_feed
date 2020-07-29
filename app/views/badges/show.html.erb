@@ -6,4 +6,16 @@
 <h4> <%= @badge.name%> Badge </h4>
 <%= button_to "Edit", edit_badge_path(@badge), method: :get %>
 <%= button_to 'Delete', badge_path(@badge), method: :delete %>
+<h4> All badge holders: </h4>
+<ul>
+    <% @badge.users_badges.order_by_name.each do |u| %>
+        <li><%=link_to u.full_name, link_path(u.user)%></li>
+        <ul>
+            <li>
+                Expiration: <%= u.expiration_format %>
+            </li>
+        </ul>
+        <hr>
+    <% end %>
+</ul>
 <%= link_to "Back", :back %>

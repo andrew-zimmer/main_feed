@@ -1,6 +1,6 @@
 <h2> <%= @user.full_name %> </h2>
 
-<h4> Email: <%= @user.email %> </h4>
+<h4> Email: <%= mail_to @user.email, @user.email %> </h4>
 <h4> Phone #: <%= @user.phone_number %> </h4>
 <h4> Role: <%= @user.role %> </h4>
 <h4> Badge: <%= render partial: 'share/badges', locals: {user: @user}%> </h4>

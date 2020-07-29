@@ -22,5 +22,9 @@ class Helper < ApplicationRecord
     user.phone_number
   end
 
+  def users_badges
+    user.users_badges
+  end
+
 
 end

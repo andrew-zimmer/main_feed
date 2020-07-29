@@ -59,4 +59,12 @@ module ApplicationHelper
         end
     end
 
+    def show_add_helper_foreman_or_neither(user)
+        if user.class == Foreman
+            content_tag :li, (render partial: 'helper_list', locals: {t: user})
+        elsif user.class == Helper
+            content_tag :li, (render partial: 'helpers/foreman_link', locals: {user: user})
+        end
+    end
+
 end

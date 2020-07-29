@@ -1,11 +1,4 @@
-
-<h1><%= @helper.full_name %></h1>
-      <ul>
-        <li><h4>Email: <%= @helper.email %> </h4></li>
-        <li><h4>Phone #: <%= @helper.phone_number %> </h4></li>
-        <li><h4>Foreman: <%= link_to @helper.foreman.full_name, foreman_path(@helper.foreman) %></h4></li>
-        <li><h4>Badges: <%=  render partial: 'share/badges', locals: {user: @helper.user} %> </h4></li>
-    </ul>
+<%= render partial: 'share/show_info', locals: {user: @helper} %>
 
 <%= link_to 'Edit', edit_helper_path(@helper) %> /
 <%= link_to 'Add Badge', new_user_users_badge_path(@helper.user) %> /

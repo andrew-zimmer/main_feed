@@ -13,4 +13,12 @@ class UsersBadge < ApplicationRecord
     "#{self.user.full_name}"
   end
 
+  def self.order_by_name
+    self.joins(:user).order(:first_name)
+  end
+
+  def expiration_format
+    expiration.strftime("%B %d, %Y")
+  end
+
 end

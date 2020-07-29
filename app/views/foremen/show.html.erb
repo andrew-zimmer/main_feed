@@ -1,10 +1,4 @@
-<h2><%= @foreman.full_name%></h2>
-    <ul>
-        <li><h4>Email: <%= @foreman.email %> </h4></li>
-        <li><h4>Phone #: <%= @foreman.phone_number %> </h4></li>
-        <li><h4>Helpers: <%= render partial: 'helper_list', locals: {t: @foreman} %> </h4></li>
-        <li><h4>Badges: <%=  render partial: 'share/badges', locals: {user: @foreman.user} %> </h4></li>
-    </ul>
+<%= render partial: 'share/show_info', locals: {user: @foreman} %>
 
 <%= link_to 'Edit', edit_foreman_path(@foreman) if current_user.super_admin?%> /
 <%= link_to 'Add Helper', new_foreman_helper_path(@foreman) %> /

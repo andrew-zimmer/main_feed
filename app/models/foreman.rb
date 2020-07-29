@@ -18,6 +18,10 @@ class Foreman < ApplicationRecord
     user.phone_number
   end
 
+  def users_badges
+    user.users_badges
+  end
+
   def self.current_foreman
     self.find_by(id: params[:id])
   end
