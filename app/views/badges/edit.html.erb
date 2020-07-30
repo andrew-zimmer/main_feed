@@ -6,4 +6,5 @@
     <%= render partial: 'form', locals: {f: f} %>
     <%= f.submit%>
 <% end %>
-    <%= button_to 'Delete', badge_path(@badge), method: :delete %> <br><br>
+<%= button_to 'Delete', badge_path(@badge), method: :delete %> <br><br>
+<%= link_to "Back", :back %>
