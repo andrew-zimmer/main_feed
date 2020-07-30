@@ -30,4 +30,11 @@ Rails.application.routes.draw do
   end
 
   resources :users_badges
+
+  #project and schedule routes
+  resources :projects do
+    resources :schedules, only: %i[index new]
+  end
+
+  resources :schedules
 end

@@ -1,0 +1,22 @@
+<h1> Edit <%= @project.name %></h1>
+
+<%= render partial: 'share/errors', locals: {obj: @project} %>
+
+<%= form_for @project do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+
+    <%= f.label :started, 'Started' %><br>
+    <%= f.label :started, 'True'%>
+    <%= f.radio_button :started, 'true' %>
+    <%= f.label :started, 'False'%>
+    <%= f.radio_button :started, 'false' %><br> <br>
+
+    <%= f.label :finish, 'Finished' %><br>
+    <%= f.label :finish, 'True'%>
+    <%= f.radio_button :finish, 'true' %>
+    <%= f.label :finish, 'False'%>
+    <%= f.radio_button :finish, 'false' %><br> <br>
+
+    <%= f.submit %>
+<% end %>
+<%= link_to "Back", :back %>

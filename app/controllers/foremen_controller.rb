@@ -42,7 +42,7 @@ class ForemenController < ApplicationController
 
     private
     def foreman_params
-        params.require(:foreman).permit(:user_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number ])
+        params.require(:foreman).permit(:user_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number, :construction_type ])
     end
 
     def delete_password_attributes_from_params_if_not_present

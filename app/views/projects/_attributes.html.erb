@@ -1,0 +1,14 @@
+<h1> <%= title_link_if_in_index_view(obj) %> </h1>
+<h3><%= obj.construction_type%> </h3>
+
+<ul>
+    <li> <h3>Address: <%= obj.address%> </h3> </li>
+    <li> <h3>Project #: <%= obj.project_number%> </h3> </li>
+    <li> <h3>Start Date: <%= obj.start_time_format%> </h3> </li>
+    <li> <h3>End Date: <%= obj.end_time_format%> </h3> </li>
+    <li> <h3>Started: <%= obj.started%> </h3> </li>
+    <li> <h3>Finished: <%= obj.finish%> </h3> </li>
+    <%= link_to 'Edit', edit_project_path(obj) %> /
+    <%= link_to "Back", :back %> /
+    <%= button_to "Delete", project_path(obj), method: :delete%>
+</ul>

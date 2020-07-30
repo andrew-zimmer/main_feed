@@ -1,0 +1,17 @@
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :address %><br>
+    <%= f.text_field :address %><br> <br>
+
+    <%= f.label :project_number %><br>
+    <%= f.number_field :project_number %><br> <br>
+
+    <%= f.label :start_date %><br>
+    <%= f.date_field :start_date %><br> <br>
+
+    <%= f.label :end_date %><br>
+    <%= f.date_field :end_date %><br> <br>
+
+    <%= f.label "Construction Type", :construction_type %><br>
+    <%= f.select :construction_type, [ 'New Construction', 'Tenent'], :prompt => 'Select One' %><br> <br>

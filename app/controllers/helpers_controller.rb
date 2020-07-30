@@ -44,7 +44,7 @@ class HelpersController < ApplicationController
     private
 
     def helper_params
-        params.require(:helper).permit(:user_id, :foreman_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number ])
+        params.require(:helper).permit(:user_id, :foreman_id, user_attributes: [:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number, :construction_type ])
     end
 
     def find_helper_by_params

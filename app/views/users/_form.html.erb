@@ -9,6 +9,11 @@
         <%= f.text_field :last_name %>
     </div>
 
+    <div>
+      <%= f.label :construction_type, "Construction Type"%>
+      <%= f.select :construction_type, [ 'New Construction', 'Tenent'], :prompt => 'Select One' %><br> <br>
+    </div>
+
 
     <div>
         <%= f.label :role, 'Access Level' %><br>

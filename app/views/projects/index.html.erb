@@ -1,0 +1,8 @@
+<h1> Projects </h1>
+<%= button_to "Create New Project", new_project_path, method: :get %>
+<%= link_to "Back", :back %>
+
+<%  @projects.each do |p| %>
+    <%= render partial: 'attributes', locals: {obj: p} %>
+    <hr>
+<% end %>

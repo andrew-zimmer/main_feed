@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number, foreman_attributes: [:user_id], helper_attributes: [:user_id, :foreman_id])
+        params.require(:user).permit(:first_name, :last_name, :role, :email, :password, :password_confirmation, :phone_number, :construction_type, foreman_attributes: [:user_id], helper_attributes: [:user_id, :foreman_id])
     end
 
     def find_user_from_params_id

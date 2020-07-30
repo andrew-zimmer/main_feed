@@ -22,6 +22,10 @@ class Foreman < ApplicationRecord
     user.users_badges
   end
 
+  def construction_type
+    self.user.construction_type
+  end
+
   def self.current_foreman
     self.find_by(id: params[:id])
   end

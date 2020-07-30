@@ -26,5 +26,9 @@ class Helper < ApplicationRecord
     user.users_badges
   end
 
+  def construction_type
+    self.user.construction_type
+  end
+
 
 end

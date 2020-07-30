@@ -1,0 +1,10 @@
+<h1> Create a New Project </h1>
+<%= render partial: 'share/errors', locals: {obj: @project} %>
+
+<%= form_for @project do |f| %>
+
+    <%= render partial: 'form', locals: {f: f} %>
+
+    <%= f.submit%>
+<% end %>
+<%= link_to "Back", :back %>
