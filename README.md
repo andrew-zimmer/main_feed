@@ -19,4 +19,4 @@ This project is intended to be a safe, welcoming space for collaboration, and co
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 # Code of Conduct
-Everyone interacting in the Smarta MARTA’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/andrew-zimmer/main_feed/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Main Feed’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/andrew-zimmer/main_feed/blob/master/CODE_OF_CONDUCT.md).
