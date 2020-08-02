@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/users/contacts' => 'users#contacts'
   resources :users, :controller => 'users', only: [:edit, :update, :destroy, :index, :show] do
     resources :users_badges, only: [:new]
+    resources :schedules, only: %i[index]
   end
 
   get "/foremen/contacts" => "foremen#contacts"

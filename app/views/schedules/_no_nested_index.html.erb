@@ -1,0 +1,16 @@
+<h1> Schedule </h1>
+<ul>
+    <h2>New Construction</h2>
+    <% obj.new_construction.uniq_by_project.each do |n| %>
+        <li> <%= link_to n.project_name, project_schedules_path(n.project) %> </li>
+    <% end %>
+</ul>
+
+<hr>
+
+<ul>
+    <h2>Tenent</h2>
+    <% obj.tenent.uniq_by_project.each do |n| %>
+       <li> <%= link_to n.project_name, project_schedules_path(n.project) %> </li>
+    <% end %>
+</ul>

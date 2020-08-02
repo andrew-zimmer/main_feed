@@ -26,7 +26,7 @@ class Project < ApplicationRecord
     end
 
     def end_date_is_not_before_start_date
-        if start_date < end_date
+        if start_date > end_date
             errors.add(:end_date, "can't be set before start date")
         end
     end

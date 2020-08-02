@@ -1,0 +1,10 @@
+
+<% obj.day_range.each do |t| %>
+    <%time = Time.new(obj.year, obj.month, (obj.date.to_i + (t-1)).to_s)%>
+    <h3>
+        <li>
+            <%= "#{time.strftime('%A')} #{time.strftime('%d')}: " %><br>
+            <%="#{obj.project_name}" %>
+        </li>
+    </h3><br>
+<%end%>

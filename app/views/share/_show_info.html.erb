@@ -4,5 +4,6 @@
         <li><h4>Email: <%= mail_to user.email, user.email %> </h4></li>
         <li><h4>Phone #: <%= user.phone_number %> </h4></li>
         <%= show_add_helper_foreman_or_neither(user) %>
+        <li> <h4> <%= link_to 'Schedule', user_schedules_path(check_for_foreman_and_helper_id(user)) %> </h4> </li>
         <li><h4>Badges: <%=  render partial: 'share/badges', locals: {user: user} %> </h4></li>
     </ul>

@@ -1,0 +1,11 @@
+<%= f.label :user_id %><br>
+<%= f.collection_select :user_id, User.foreman_all, :id, :full_name%><br><br>
+
+<%= f.label :project_id %><br>
+<%= f.collection_select :project_id, Project.all, :id, :name %><br><br>
+
+<%= f.label :start_date %><br>
+<%= f.date_field :start_date %><br><br>
+
+<%= f.label :end_date %><br>
+<%= f.date_field :end_date %><br><br>

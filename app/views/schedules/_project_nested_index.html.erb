@@ -1,0 +1,9 @@
+<h1> project nested index view </h1>
+<ul>
+    <% @schedules.each do |s| %>
+        <h2><li> <%= s.full_name %> </li></h2>
+        <ul>
+                <%= render partial: 'schedule_print', locals: {obj: s} %>
+        </ul>
+    <% end %>
+</ul>

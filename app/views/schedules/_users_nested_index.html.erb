@@ -1,0 +1,13 @@
+<h1> <%= params_user.full_name%>'s Schedule </h1>
+
+<h3> This Week's </h3>
+<% obj.current_week_schedule.each do |s| %>
+    <%= s %>
+<% end %>
+
+<hr>
+
+<h3> Next Week's </h3>
+<% obj.next_week_schedule.each do |s| %>
+    <%= render partial: 'schedule_print', locals: {obj: s} %>
+<% end %>

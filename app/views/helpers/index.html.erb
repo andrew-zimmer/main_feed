@@ -6,6 +6,7 @@
         <li>
             <h4>
                 <%= link_to helper.user.full_name, helper_path(helper) %>
+                <%= button_to "Delete", helper_path(helper), method: :delete %>
             </h4>
         </li>
     <% end %>

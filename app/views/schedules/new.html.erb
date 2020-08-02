@@ -1,0 +1,7 @@
+<h1> Add to your schedule </h1>
+<%= render partial: 'share/errors', locals: {obj: @schedule} %>
+<%= form_for @schedule do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+    <%= f.submit %>
+<% end %>
+<%= link_to "Back", :back %>
