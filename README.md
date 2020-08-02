@@ -9,6 +9,7 @@ After you have cloned and opened the project in your text editor, if you on a PC
 
 # Built With
 Ruby on Rails (6.0.3) - The web framework used
+
 Bundler - Dependency Management
 
 # Contributing
